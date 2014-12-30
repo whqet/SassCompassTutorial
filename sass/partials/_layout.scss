@@ -4,8 +4,6 @@ $column-width: 5em;				// each column is 5em wide
 $gutter-width: 1em;				// 1em gutters between columns
 $grid-padding: $gutter-width;	// grid padding equal to gutter
 $border-box-sizing: true;
-$container: true;
-
 
 /*
 // advanced
@@ -38,7 +36,7 @@ $L: 75em;	// roughly speaking, around 1200px wide with 16px body font
 }
 [class ^="inner"] {
 	@include container();
-	@include susy-grid-background;
+	//@include susy-grid-background;
 }
 
 nav[role="navigation"] {
@@ -49,8 +47,20 @@ nav[role="navigation"] {
 
 .main-content {
 	@include at-breakpoint($M) {
-		@include prefix(1,12);
+		//@include prefix(1,12);
 		@include span-columns(9 omega, 12);
+		@include pad(1,1,12);
+	}
+}
+
+@include with-grid-settings(4, 12em, 1.5em, 0) {
+	.purchase-links-wrapper {
+		@include container;
+		@include susy-grid-background;
+	}
+	.purchase-link {
+		@include span-columns(1);
+		@include nth-omega(4n);
 	}
 }
 
