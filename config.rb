@@ -1,3 +1,4 @@
+require 'susy'
 require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 
@@ -5,8 +6,8 @@ require 'compass/import-once/activate'
 http_path = "/"
 css_dir = "css"
 sass_dir = "sass"
-images_dir = “img”
-javascripts_dir = “js”
+images_dir = "img"
+javascripts_dir = "js"
 fonts_dir = "fonts"
 
 #output_style = :nested

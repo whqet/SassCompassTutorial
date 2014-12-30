@@ -1,12 +1,60 @@
+@import "susyone";
+$total-columns:	12;				// a 12-column grid
+$column-width: 5em;				// each column is 5em wide
+$gutter-width: 1em;				// 1em gutters between columns
+$grid-padding: $gutter-width;	// grid padding equal to gutter
+$border-box-sizing: true;
+$container: true;
+
+
+/*
+// advanced
+$container-width: true;
+$container-style: magic;
+$from-direction: left;
+$omega-float: right;
+
+$susy: (
+  // the basics
+  columns: $total-columns,
+  gutters: $gutter-width / $column-width,
+  column-width: $column-width,
+  border-box-sizing: true,
+
+  // advanced
+  container: $container-width,
+  math: if($container-style == magic, fluid, $container-style),
+  flow: if($from-direction == right, rtl, ltr),
+  last-flow: if($omega-float == $from-direction, from, to),
+);
+*/
+
+// Breakpoint vars
+$M: 47em;	// roughly speaking, around 750px wide with 16px body font
+$L: 75em;	// roughly speaking, around 1200px wide with 16px body font
+
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	@include bs(border-box);
 }
-body {
-	max-width: 1200px;
-	margin: auto;
+[class ^="inner"] {
+	@include container();
+	@include susy-grid-background;
 }
+
+nav[role="navigation"] {
+	@include at-breakpoint($M) {
+		@include span-columns(3,12);
+	}
+}
+
+.main-content {
+	@include at-breakpoint($M) {
+		@include prefix(1,12);
+		@include span-columns(9 omega, 12);
+	}
+}
+
+/*
 header[role="banner"], footer[role="contentinfo"] {
 	width: 100%;
 	display: block;
@@ -22,3 +70,4 @@ nav[role="navigation"] {
 footer[role="contentinfo"] {
 	clear: both;
 }
+*/
